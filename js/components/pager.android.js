@@ -5,10 +5,11 @@ import React, {
 
 import Sentence from './sentence'
 
-export default ({ state }) => (
+export default ({ state, dispatch }) => (
   <ViewPagerAndroid
     style={styles.viewPager}
-    initialPage={0}>
+    initialPage={state.current}
+    onPageSelected={e => dispatch({ type: 'CHANGE', id: e.nativeEvent.position })}>
     {state.sentences.map((s, i) => <Sentence text={s} id={i} key={i} />)}
   </ViewPagerAndroid>
 )

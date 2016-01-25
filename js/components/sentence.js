@@ -1,19 +1,10 @@
 import React, {
-  Text,
   View,
+  Text,
   StyleSheet
 } from 'react-native'
 
-const white = '#fff'
-const colors = ['#f39c12', '#3498db', '#e74c3c', '#2ecc71', '#9b59b6']
-
-const styleColors = colors
-  .map(c => [
-    { bg: c, fg: white },
-    { bg: white, fg: c }])
-  .reduce((a, b) => a.concat(b));
-
-const color = id => styleColors[id % styleColors.length]
+import color from './color'
 
 export default ({ id, text }) => (
   <View style={[styles.view, {
