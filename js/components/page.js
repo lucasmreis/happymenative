@@ -8,6 +8,10 @@ import React, {
 import color from './color'
 
 export default React.createClass({
+  propTypes: {
+    id: React.PropTypes.number.isRequired,
+    text: React.PropTypes.string.isRequired
+  },
   getInitialState() {
     return {
       fadeAnim: new Animated.Value(0)
@@ -19,27 +23,27 @@ export default React.createClass({
       { toValue: 1 },
     ).start();
   },
+  componentWillUnmount() {
+    Animated.timing(
+      this.state.fadeAnim,
+      { toValue: 0 },
+    ).start();
+  },
   render() {
     const { id, text } = this.props
     const { fadeAnim } = this.state
     const { bg, fg } = color(id)
-    const interpolation = {
-      inputRange: [0, 1],
-      outputRange: [bg, fg]
-    }
     return (
-      <View style={[styles.view, {
-        backgroundColor: bg
-      }]}>
-        <Text style={[styles.text, {
-          color: fg
-        }]}>
-        {text}
-        </Text>
+      <View style={[styles.view, { backgroundColor: bg }]}>
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <Text style={[styles.text, { color: fg }]}>
+          {text}
+          </Text>
+        </Animated.View>
       </View>)
   }
 })
-//fadeAnim.interpolate(interpolation)
+
 const styles = StyleSheet.create({
   view: {
     flex: 1,

@@ -1,12 +1,20 @@
+// @flow
+
+import type { Sentence, Id, Model } from './model'
+
 import { putAsync } from 'js-csp';
 
-// type Action = { type: 'CHANGE', id: number }
-//             | { type: 'ADD', text: string }
-//             | { type: 'REMOVE' }
+export type Change = { type: 'CHANGE', id: Id }
+export type Add    = { type: 'ADD', text: Sentence }
+export type Remove = { type: 'REMOVE' }
 
-export function update(state, action) {
-  const t = action.type
-  const s = state.sentences
+export type Action = Change
+                   | Add
+                   | Remove
+
+export function update(state: Model, action: Action): Model {
+  const t: string          = action.type
+  const s: Array<Sentence> = state.sentences
 
   return t === 'CHANGE' ? { ...state, current: action.id }
        : t === 'ADD'    ? { ...state, sentences: [action.text, ...s] }
@@ -14,6 +22,6 @@ export function update(state, action) {
        : state
 }
 
-export function dispatch(channel, action) {
+export function dispatch(channel: any, action: Action): void {
   putAsync(channel, action)
 }

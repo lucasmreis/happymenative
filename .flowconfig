@@ -44,6 +44,7 @@
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
+interfaces/
 
 [options]
 module.system=haste

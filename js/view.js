@@ -1,3 +1,7 @@
+// @flow
+
+import type { Action } from './update'
+
 import React from 'react-native'
 import { chan, go, take } from 'js-csp'
 
@@ -20,13 +24,13 @@ export default React.createClass({
       while (true) {
         const state = self.state;
         console.log(state)
-        const action = yield take(actionsChannel)
+        const action: Action = yield take(actionsChannel)
         log(action)
         self.setState(update(state, action))
       }
     })
   },
-  dispatch(action) {
+  dispatch(action: Action): void {
     return dispatch(actionsChannel, action)
   },
   render() {
