@@ -10,7 +10,7 @@ export type Model = {
 }
 
 const model: Model = {
-  sentences: new Array(1).join().split(',').map((e, i) => `Sentence ${i}`),
+  sentences: new Array(4).join().split(',').map((e, i) => `Sentence ${i}`),
   current: 0
 }
 

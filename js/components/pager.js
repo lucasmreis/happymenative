@@ -21,14 +21,35 @@ const renderPages = ({ sentences }: Model) =>
     ? sentences.map(renderPage)
     : renderPage('Create your first sentence!', 0)
 
-export default ({ state, dispatch }) => (
-  <ViewPagerAndroid
-    style={styles.viewPager}
-    initialPage={state.current}
-    onPageSelected={e => dispatch({ type: 'CHANGE', id: e.nativeEvent.position })}>
-    {renderPages(state)}
-  </ViewPagerAndroid>
-)
+export default React.createClass({
+  shouldComponentUpdate(nextProps) {
+    const prev = this.props.state.sentences.length
+    const next = nextProps.state.sentences.length
+
+    if (prev !== next) {
+      this.forceUpdate()
+    }
+
+    return prev !== next
+  },
+  componentDidUpdate() {
+    if (this.viewPager) {
+      this.viewPager.setPage(this.props.state.current)
+    }
+  },
+  render() {
+    const { state, dispatch } = this.props
+    return (
+      <ViewPagerAndroid
+        style={styles.viewPager}
+        initialPage={0}
+        onPageSelected={e => dispatch({ type: 'CHANGE', id: e.nativeEvent.position })}
+        ref={viewPager => this.viewPager = viewPager}>
+        {renderPages(state)}
+      </ViewPagerAndroid>
+    )
+  }
+})
 
 const styles = StyleSheet.create({
   viewPager: {

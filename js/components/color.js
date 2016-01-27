@@ -1,4 +1,4 @@
-// @flow weak
+// @flow
 
 import type { Id } from '../model'
 
