@@ -4,7 +4,7 @@ import type { Id } from '../model'
 
 const white = '#fff'
 const gray = '#34495e'
-const colors = ['#f39c12', '#3498db', '#e74c3c', '#2ecc71', '#9b59b6']
+const colors = ['#3498db', '#f39c12', '#e74c3c', '#2ecc71', '#9b59b6']
 
 type ColorShades = { bg: string, fg: string }
 
