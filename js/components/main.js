@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, { Alert } from 'react-native'
 
 import SwipeActions from 'swipe-actions'

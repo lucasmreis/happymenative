@@ -15,5 +15,3 @@ const model: Model = {
 }
 
 export default model
-
-// new Array(1).join().split(',').map((e, i) => `Sentence ${i}`),

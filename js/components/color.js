@@ -17,9 +17,11 @@ const styleColors: Array<ColorShades> = colors
   .reduce((a, b) => a.concat(b));
 
 function color(id: Id | 'action'): ColorShades {
-  return id === 'action'
-    ? actionColors
-    : styleColors[id % styleColors.length]
+  if (typeof id === 'string') {
+    return actionColors
+  } else {
+    return styleColors[id % styleColors.length]
+  }
 }
 
 export default color

@@ -1,6 +1,8 @@
 // @flow
 
-export const between = (min: number, max: number, i: number) =>
+type N = number
+
+export const between = (min: N, max: N, i: N): N =>
   max < min
     ? min
     : i < min

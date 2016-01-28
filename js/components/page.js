@@ -1,3 +1,5 @@
+// @flow
+
 import React, {
   View,
   Text,

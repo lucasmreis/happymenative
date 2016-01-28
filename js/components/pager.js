@@ -32,6 +32,7 @@ export default React.createClass({
 
     return prev !== next
   },
+  viewPager: undefined,
   componentDidUpdate() {
     if (this.viewPager) {
       this.viewPager.setPage(this.props.state.current)

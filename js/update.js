@@ -15,14 +15,24 @@ export type Action = Change
                    | Remove
 
 export function update(state: Model, action: Action): Model {
-  const t: string          = action.type
   const s: Array<Sentence> = state.sentences
   const c: Id              = state.current
 
-  return t === 'CHANGE' ? { ...state, current: action.id }
-       : t === 'ADD'    ? { ...state, sentences: [action.text, ...s] }
-       : t === 'REMOVE' ? { ...state, sentences: s.filter((_, id) => id !== c), current: between(0, s.length - 2, c) }
-       : state
+  switch (action.type) {
+    case 'CHANGE':
+      return { ...state, current: action.id }
+
+    case 'ADD':
+      return { ...state, sentences: [action.text, ...s] }
+
+    case 'REMOVE':
+      const sentences = s.filter((_, id) => id !== c)
+      const current   = between(0, s.length - 2, c)
+      return { ...state, sentences, current }
+
+    default:
+      return state
+  }
 }
 
 export function dispatch(channel: any, action: Action): void {
