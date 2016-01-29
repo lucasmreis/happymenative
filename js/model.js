@@ -6,12 +6,14 @@ export type Id = number
 
 export type Model = {
   sentences: Array<Sentence>,
-  current: Id
+  current: Id,
+  toAdd: Sentence
 }
 
 const model: Model = {
   sentences: new Array(15).join().split(',').map((e, i) => `Sentence ${i}`),
-  current: 0
+  current: 0,
+  toAdd: ''
 }
 
 export default model

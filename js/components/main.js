@@ -6,9 +6,10 @@ import SwipeActions from 'swipe-actions'
 
 import Action from './action'
 import Pager from './pager'
+import Add from './add'
 
-const lowerNode = <Action text={'REMOVE'} />
-const upperNode = <Action text={'LIST'} />
+const lowerNode = <Action theme={'action'} text={'REMOVE'} />
+const upperNode = <Action theme={'action'} text={'LIST'} />
 
 const lowerAction = ({ state, dispatch }) =>
   () => Alert.alert(
@@ -20,11 +21,13 @@ const lowerAction = ({ state, dispatch }) =>
     ]
 )
 
-export default props => (
-  <SwipeActions
-    lowerNode={lowerNode}
-    upperNode={upperNode}
-    lowerAction={lowerAction(props)}>
-    <Pager {...props} />
-  </SwipeActions>
-)
+export default ({ state, dispatch }) => <Add text={state.toAdd} dispatch={dispatch} />
+
+// export default props => (
+//   <SwipeActions
+//     lowerNode={lowerNode}
+//     upperNode={upperNode}
+//     lowerAction={lowerAction(props)}>
+//     <Pager {...props} />
+//   </SwipeActions>
+// )

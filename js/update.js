@@ -6,12 +6,14 @@ import { putAsync } from 'js-csp';
 
 import { between } from './util'
 
-export type Change = { type: 'CHANGE', id: Id }
-export type Add    = { type: 'ADD', text: Sentence }
+export type Select = { type: 'SELECT', id: Id }
+export type Add    = { type: 'ADD' }
+export type Change = { type: 'CHANGE', text: Sentence }
 export type Remove = { type: 'REMOVE' }
 
-export type Action = Change
+export type Action = Select
                    | Add
+                   | Change
                    | Remove
 
 export function update(state: Model, action: Action): Model {
@@ -19,11 +21,14 @@ export function update(state: Model, action: Action): Model {
   const c: Id              = state.current
 
   switch (action.type) {
-    case 'CHANGE':
+    case 'SELECT':
       return { ...state, current: action.id }
 
     case 'ADD':
-      return { ...state, sentences: [action.text, ...s] }
+      return { ...state, sentences: [state.toAdd, ...s], toAdd: '' }
+
+    case 'CHANGE':
+      return { ...state, toAdd: action.text }
 
     case 'REMOVE':
       const sentences = s.filter((_, id) => id !== c)

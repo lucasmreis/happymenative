@@ -23,7 +23,6 @@ export default React.createClass({
     go(function * () {
       while (true) {
         const state = self.state;
-        console.log(state)
         const action: Action = yield take(actionsChannel)
         log(action)
         self.setState(update(state, action))

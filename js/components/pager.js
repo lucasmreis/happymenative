@@ -44,7 +44,7 @@ export default React.createClass({
       <ViewPagerAndroid
         style={styles.viewPager}
         initialPage={0}
-        onPageSelected={e => dispatch({ type: 'CHANGE', id: e.nativeEvent.position })}
+        onPageSelected={e => dispatch({ type: 'SELECT', id: e.nativeEvent.position })}
         ref={viewPager => this.viewPager = viewPager}>
         {renderPages(state)}
       </ViewPagerAndroid>
