@@ -1,6 +1,7 @@
 import React, {
   View,
   TextInput,
+  BackAndroid,
   StyleSheet
 } from 'react-native'
 
@@ -13,6 +14,16 @@ export default React.createClass({
     return {
       text: ''
     }
+  },
+  backHandler() {
+    this.props.navigator.popToTop()
+    return true
+  },
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress', this.backHandler)
+  },
+  componentWillUnmount() {
+    BackAndroid.removeEventListener('hardwareBackPress', this.backHandler)
   },
   render() {
     const dispatch = this.props.dispatch

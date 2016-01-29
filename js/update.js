@@ -25,7 +25,10 @@ export function update(state: Model, action: Action): Model {
       return { ...state, current: action.id }
 
     case 'ADD':
-      return { ...state, sentences: [state.toAdd, ...s], toAdd: '' }
+      const addSentences = state.toAdd === ''
+        ? s
+        : [state.toAdd, ...s]
+      return { ...state, sentences: addSentences, toAdd: '' }
 
     case 'CHANGE':
       return { ...state, toAdd: action.text }
