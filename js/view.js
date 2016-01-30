@@ -13,23 +13,20 @@ import Main from './components/main'
 
 const actionsChannel = new Channel()
 
-const go = asyncFn => asyncFn()
-
 export default React.createClass({
   getInitialState() {
     return model
   },
+  async renderLoop() {
+    while (true) {
+      const state = this.state
+      const action: Action = await actionsChannel.take()
+      log(action)
+      this.setState(update(state, action))
+    }
+  },
   componentDidMount() {
-    const self = this;
-
-    go(async () => {
-      while (true) {
-        const state = self.state
-        const action: Action = await actionsChannel.take()
-        log(action)
-        self.setState(update(state, action))
-      }
-    })
+    this.renderLoop()
   },
   dispatch(action: Action): void {
     return dispatch(actionsChannel, action)
