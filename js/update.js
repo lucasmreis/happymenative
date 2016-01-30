@@ -2,8 +2,6 @@
 
 import type { Sentence, Id, Model } from './model'
 
-import { putAsync } from 'js-csp';
-
 import { between } from './util'
 
 export type Select = { type: 'SELECT', id: Id }
@@ -28,7 +26,7 @@ export function update(state: Model, action: Action): Model {
       const addSentences = state.toAdd === ''
         ? s
         : [state.toAdd, ...s]
-      return { ...state, sentences: addSentences, toAdd: '' }
+      return { ...state, sentences: addSentences, toAdd: '', current: 0 }
 
     case 'CHANGE':
       return { ...state, toAdd: action.text }
@@ -44,5 +42,5 @@ export function update(state: Model, action: Action): Model {
 }
 
 export function dispatch(channel: any, action: Action): void {
-  putAsync(channel, action)
+  channel.put(action)
 }

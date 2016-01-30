@@ -6,11 +6,15 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "async-csp": "^0.3.0",
     "react-native": "^0.18.1"
   },
   "marlint": {
     "rules": {
-      "operator-linebreak": [2, "before"],
+      "operator-linebreak": [
+        2,
+        "before"
+      ],
       "no-use-before-define": 0,
       "comma-dangle": 0,
       "semi": 0,
@@ -18,8 +22,10 @@
       "no-nested-ternary": 0,
       "no-else-return": 0,
       "no-constant-condition": 0,
+      "arrow-parens": 0,
       "react/display-name": 0,
-      "react/jsx-boolean-value": 0
+      "react/jsx-boolean-value": 0,
+      "react/prop-types": 0
     }
   }
 }

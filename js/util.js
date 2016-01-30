@@ -2,11 +2,12 @@
 
 type N = number
 
-export const between = (min: N, max: N, i: N): N =>
-  max < min
+export function between(min: N, max: N, i: N): N {
+  return max < min
     ? min
     : i < min
       ? min
       : i > max
         ? max
         : i
+}

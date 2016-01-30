@@ -20,13 +20,16 @@ const styleColors: Array<ColorShades> = colors
   .reduce((a, b) => a.concat(b));
 
 function color(id: Id | 'action' | 'dark-action'): ColorShades {
-  if (typeof id === 'string' && id === 'action') {
-    return actionColors
-  } else if (typeof id === 'string' && id === 'dark-action') {
-    return darkActionColors
-  } else {
-    return styleColors[id % styleColors.length]
-  }
+  return typeof id === 'string' && id === 'action'
+     ? actionColors
+
+   : typeof id === 'string' && id === 'dark-action'
+     ? darkActionColors
+
+   : typeof id === 'number'
+     ? styleColors[id % styleColors.length]
+
+   : styleColors[0]
 }
 
 export default color
