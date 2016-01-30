@@ -25,11 +25,15 @@ export default React.createClass({
   componentWillUnmount() {
     BackAndroid.removeEventListener('hardwareBackPress', this.backHandler)
   },
+  addAndGoToPager(action) {
+    this.props.dispatch(action)
+    this.props.navigator.popToTop()
+  },
   render() {
     const dispatch = this.props.dispatch
     return (
       <View style={styles.view}>
-        <TouchableAction theme={'dark-action'} text={'SUBMIT'} dispatch={dispatch} />
+        <TouchableAction theme={'dark-action'} text={'SUBMIT'} dispatch={this.addAndGoToPager} />
         <TextInput
           onChangeText={text => dispatch({ type: 'CHANGE', text })}
           value={this.props.text}

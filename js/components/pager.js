@@ -19,7 +19,7 @@ const renderPage = (text: Sentence, id: Id) => (
 const renderPages = ({ sentences }: Model) =>
   sentences.length > 0
     ? sentences.map(renderPage)
-    : renderPage('Create your first sentence!', 0)
+    : renderPage('Swipe down to create your first sentence!', 0)
 
 export default React.createClass({
   shouldComponentUpdate(nextProps) {
