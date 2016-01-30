@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FF8D00'
+    backgroundColor: '#FF8D00',
+    padding: 20
   },
   text: {
     textAlign: 'center',

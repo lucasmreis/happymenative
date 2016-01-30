@@ -1,32 +1,52 @@
-// @flow
+// @flow weak
 
 import type { Action } from './update'
 
-import React from 'react-native'
+import React, { AsyncStorage } from 'react-native'
 import Channel from 'async-csp'
 
-import model from './model'
+import emptyModel from './model'
 import { update, dispatch } from './update'
 import log from './log'
 
 import Main from './components/main'
 
+const STORAGE_KEY = 'HappyMeStorage'
+
 const actionsChannel = new Channel()
 
 export default React.createClass({
   getInitialState() {
-    return model
+    return emptyModel
+  },
+  async save(state) {
+    const data = JSON.stringify(state)
+    await AsyncStorage.setItem(STORAGE_KEY, data)
+  },
+  async load(): Promise {
+    try {
+      const loaded = await AsyncStorage.getItem(STORAGE_KEY)
+      const parsed = JSON.parse(loaded)
+      return parsed
+        ? { ...parsed, current: 0 }
+        : emptyModel
+    } catch (_) {
+      return emptyModel
+    }
   },
   async renderLoop() {
     while (true) {
-      const state = this.state
       const action: Action = await actionsChannel.take()
       log(action)
-      this.setState(update(state, action))
+      const newState = update(this.state, action)
+      this.setState(newState)
+      this.save(newState)
     }
   },
   componentDidMount() {
-    this.renderLoop()
+    this.load()
+      .then(m => this.setState(m))
+      .then(_ => this.renderLoop())
   },
   dispatch(action: Action): void {
     return dispatch(actionsChannel, action)

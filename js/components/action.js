@@ -31,7 +31,7 @@ const styles = theme =>
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 50,
-      margin: 10,
+      margin: 30,
       // android
       elevation: 10,
       // ios

@@ -10,10 +10,10 @@ export type Model = {
   toAdd: Sentence
 }
 
-const model: Model = {
-  sentences: new Array(1).join().split(',').map((e, i) => `Sentence ${i}`),
+const emptyModel: Model = {
+  sentences: [],
   current: 0,
   toAdd: ''
 }
 
-export default model
+export default emptyModel
