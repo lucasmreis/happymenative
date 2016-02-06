@@ -6,11 +6,11 @@ import React, {
 
 import Action from './action'
 
-export default ({ text, theme, dispatch }) => (
+export default ({ text, icon, theme, dispatch }) => (
   <TouchableOpacity
     onPress={() => dispatch({ type: 'ADD' })}>
 
-    <Action text={text} theme={theme} />
+    <Action text={text} icon={icon} theme={theme} />
 
   </TouchableOpacity>
 )

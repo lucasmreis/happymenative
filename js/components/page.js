@@ -7,6 +7,8 @@ import React, {
   StyleSheet
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 import color from './color'
 
 export default React.createClass({
@@ -38,9 +40,15 @@ export default React.createClass({
     return (
       <View style={[styles.view, { backgroundColor: bg }]}>
         <Animated.View style={{ opacity: fadeAnim }}>
+          <Icon name={'quote-left'} size={20} color={fg} />
+
           <Text style={[styles.text, { color: fg }]}>
-          {text}
+            {text}
           </Text>
+
+          <View style={{ alignSelf: 'flex-end' }}>
+            <Icon name={'quote-right'} size={20} color={fg} />
+          </View>
         </Animated.View>
       </View>)
   }

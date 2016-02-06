@@ -47,9 +47,6 @@ export default React.createClass({
     const initialState = await this.load()
     this.setState(initialState)
     this.renderLoop()
-    // this.load()
-    //   .then(m => this.setState(m))
-    //   .then(_ => this.renderLoop())
   },
   dispatch(action: Action): void {
     return dispatch(actionsChannel, action)

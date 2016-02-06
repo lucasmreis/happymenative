@@ -8,8 +8,8 @@ import Action from './action'
 import Pager from './pager'
 import Add from './add'
 
-const upperNode = <Action theme={'action'} text={'ADD'} />
-const lowerNode = <Action theme={'action'} text={'REMOVE'} />
+const upperNode = <Action theme={'action'} text={'add'} icon={'create'} />
+const lowerNode = <Action theme={'action'} text={'remove'} icon={'clear'}/>
 
 const upperAction = navigator => () => navigator.push({ screen: 'add' })
 

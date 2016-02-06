@@ -33,7 +33,7 @@ export default React.createClass({
     const dispatch = this.props.dispatch
     return (
       <View style={styles.view}>
-        <TouchableAction theme={'dark-action'} text={'SUBMIT'} dispatch={this.addAndGoToPager} />
+        <TouchableAction theme={'dark-action'} text={'submit'} icon={'thumb-up'} dispatch={this.addAndGoToPager} />
         <TextInput
           onChangeText={text => dispatch({ type: 'CHANGE', text })}
           value={this.props.text}

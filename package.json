@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "link": "rnpm link"
   },
   "dependencies": {
     "async-csp": "^0.3.0",
     "react-native": "^0.18.1",
+    "react-native-vector-icons": "^1.1.1",
     "swipe-actions": "^1.1.0"
   },
   "marlint": {
@@ -29,5 +31,8 @@
       "react/prop-types": 0,
       "babel/generator-star-spacing": 0
     }
+  },
+  "devDependencies": {
+    "rnpm": "^1.4.1"
   }
 }

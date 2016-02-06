@@ -6,10 +6,13 @@ import React, {
   StyleSheet
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/MaterialIcons'
+
 import color from './color'
 
-export default ({ text, theme }) => (
+export default ({ text, icon, theme }) => (
   <View style={styles(theme).actionsView}>
+    <Icon name={icon} size={32} color={color(theme).fg} />
     <Text style={styles(theme).actionsText}>
       {text}
     </Text>
@@ -19,7 +22,7 @@ export default ({ text, theme }) => (
 const styles = theme =>
   StyleSheet.create({
     actionsText: {
-      fontSize: 18,
+      fontSize: 16,
       color: color(theme).fg,
       textAlign: 'center'
     },
@@ -27,7 +30,7 @@ const styles = theme =>
       backgroundColor: color(theme).bg,
       width: 100,
       height: 100,
-      // flex: 1,
+      padding: 10,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 50,
