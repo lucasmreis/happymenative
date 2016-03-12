@@ -7,13 +7,8 @@ import React, {
   StyleSheet
 } from 'react-native'
 
-import Icon from 'react-native-vector-icons/FontAwesome'
-
-import color from './color'
-
 export default React.createClass({
   propTypes: {
-    id: React.PropTypes.number.isRequired,
     text: React.PropTypes.string.isRequired
   },
   getInitialState() {
@@ -34,21 +29,14 @@ export default React.createClass({
     ).start();
   },
   render() {
-    const { id, text } = this.props
+    const { text } = this.props
     const { fadeAnim } = this.state
-    const { bg, fg } = color(id)
     return (
-      <View style={[styles.view, { backgroundColor: bg }]}>
+      <View style={styles.view}>
         <Animated.View style={{ opacity: fadeAnim }}>
-          <Icon name={'quote-left'} size={20} color={fg} />
-
-          <Text style={[styles.text, { color: fg }]}>
+          <Text style={styles.text}>
             {text}
           </Text>
-
-          <View style={{ alignSelf: 'flex-end' }}>
-            <Icon name={'quote-right'} size={20} color={fg} />
-          </View>
         </Animated.View>
       </View>)
   }
@@ -59,13 +47,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FF8D00',
+    backgroundColor: '#fff',
     padding: 20
   },
   text: {
-    textAlign: 'center',
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff'
+    fontFamily: 'serif',
+    fontSize: 28,
+    color: '#777'
   }
 })

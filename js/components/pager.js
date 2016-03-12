@@ -8,18 +8,19 @@ import React, {
   StyleSheet
 } from 'react-native'
 
+import messages from '../messages'
 import Page from './page'
 
 const renderPage = (text: Sentence, id: Id) => (
   <View key={id}>
-    <Page text={text} id={id} />
+    <Page text={text} />
   </View>
 )
 
 const renderPages = ({ sentences }: Model) =>
   sentences.length > 0
     ? sentences.map(renderPage)
-    : renderPage('Swipe down to create your first sentence!', 0)
+    : renderPage(messages.default_page, 0)
 
 export default React.createClass({
   shouldComponentUpdate(nextProps) {
