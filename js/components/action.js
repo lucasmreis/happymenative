@@ -3,47 +3,31 @@
 import React, {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Dimensions
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import color from './color'
+const theme = type =>
+  type === 'add'
+    ? { color: '#3498db', icon: 'create', height: 120 }
+    : { color: '#e74c3c', icon: 'clear', height: Dimensions.get('window').height / 4 }
 
-export default ({ text, icon, theme }) => (
-  <View style={styles(theme).actionsView}>
-    <Icon name={icon} size={32} color={color(theme).fg} />
-    <Text style={styles(theme).actionsText}>
-      {text}
-    </Text>
+export default ({ type }) => {
+  const { color, icon, height } = theme(type)
+  return <View style={styles(height, color).actionsView}>
+    <Icon name={icon} size={40} color={'#fff'} />
   </View>
-)
+}
 
-const styles = theme =>
+const styles = (height, color) =>
   StyleSheet.create({
-    actionsText: {
-      fontSize: 16,
-      color: color(theme).fg,
-      textAlign: 'center'
-    },
     actionsView: {
-      backgroundColor: color(theme).bg,
-      width: 100,
-      height: 100,
-      padding: 10,
+      backgroundColor: color,
+      alignSelf: 'stretch',
+      height: height,
       justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 50,
-      margin: 30,
-      // android
-      elevation: 10,
-      // ios
-      shadowColor: '#000000',
-      shadowOpacity: 0.8,
-      shadowRadius: 2,
-      shadowOffset: {
-        height: 1,
-        width: 0
-      }
+      alignItems: 'center'
     }
   })
