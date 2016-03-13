@@ -9,15 +9,17 @@ import React, {
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import colors from './colors'
+
 const theme = type =>
   type === 'add'
-    ? { color: '#3498db', icon: 'create', height: 120 }
-    : { color: '#e74c3c', icon: 'clear', height: Dimensions.get('window').height / 4 }
+    ? { color: colors.addAction, icon: 'create', height: 120 }
+    : { color: colors.removeAction, icon: 'clear', height: Dimensions.get('window').height / 4 }
 
 export default ({ type }) => {
   const { color, icon, height } = theme(type)
   return <View style={styles(height, color).actionsView}>
-    <Icon name={icon} size={40} color={'#fff'} />
+    <Icon name={icon} size={40} color={colors.actionIcons} />
   </View>
 }
 

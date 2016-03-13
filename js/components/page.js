@@ -7,6 +7,8 @@ import React, {
   StyleSheet
 } from 'react-native'
 
+import colors from './colors'
+
 export default React.createClass({
   propTypes: {
     text: React.PropTypes.string.isRequired
@@ -47,12 +49,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     padding: 20
   },
   text: {
     fontFamily: 'serif',
     fontSize: 28,
-    color: '#777'
+    color: colors.fonts
   }
 })

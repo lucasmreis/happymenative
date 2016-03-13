@@ -9,6 +9,7 @@ import React, {
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 
 import messages from '../messages'
+import colors from './colors'
 
 import SubmitAction from './submit-action'
 import AddBar from './add-bar'
@@ -42,9 +43,9 @@ export default React.createClass({
         <View style={styles.textContainer}>
           <TextInput
             placeholder={messages.add_placeholder}
-            placeholderTextColor={'#ddd'}
-            selectionColor={'#ddd'}
-            underlineColorAndroid={'#fff'}
+            placeholderTextColor={colors.placeholder}
+            selectionColor={colors.placeholder}
+            underlineColorAndroid={colors.background}
             onChangeText={text => dispatch({ type: 'CHANGE', text })}
             value={this.props.text}
             style={styles.text}
@@ -64,7 +65,7 @@ export default React.createClass({
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.background
   },
   textContainer: {
     flex: 1,
@@ -73,13 +74,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'serif',
     fontSize: 28,
-    color: '#777'
-  },
-  upperBar: {
-
-  },
-  action: {
-    backgroundColor: '#2ecc71',
-    alignSelf: 'stretch'
+    color: colors.fonts
   }
 })

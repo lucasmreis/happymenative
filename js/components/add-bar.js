@@ -7,13 +7,15 @@ import React, {
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import colors from './colors'
+
 export default ({ onPress }) => (
   <TouchableNativeFeedback
     onPress={onPress}
-    background={TouchableNativeFeedback.Ripple('#ddd', false)}>
+    background={TouchableNativeFeedback.Ripple(colors.darkerBackground, false)}>
 
     <View style={styles.action}>
-      <Icon name={'arrow-back'} size={32} color={'#777'} />
+      <Icon name={'arrow-back'} size={32} color={colors.fonts} />
     </View>
 
   </TouchableNativeFeedback>

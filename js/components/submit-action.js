@@ -7,13 +7,15 @@ import React, {
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import colors from './colors'
+
 export default ({ onPress }) => (
   <TouchableNativeFeedback
     onPress={onPress}
-    background={TouchableNativeFeedback.Ripple('#27ae60', false)}>
+    background={TouchableNativeFeedback.Ripple(colors.darkerSubmitAction, false)}>
 
     <View style={styles.action}>
-      <Icon name={'add'} size={40} color={'#fff'} />
+      <Icon name={'add'} size={40} color={colors.actionIcons} />
     </View>
 
   </TouchableNativeFeedback>
@@ -21,7 +23,7 @@ export default ({ onPress }) => (
 
 const styles = StyleSheet.create({
   action: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: colors.submitAction,
     alignItems: 'center',
     alignSelf: 'stretch'
   }
