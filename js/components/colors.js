@@ -1,14 +1,26 @@
+const white = '#fafafa'
+const darkWhite = '#e1e1e1'
+
+const tomato = '#f44336'
+
+const azure = '#03a9f4'
+
+const booger = '#8bc34a'
+const darkBooger = '#72aa31'
+
+const black = '#000'
+
 export default {
-  background: '#fff',
-  darkerBackground: '#ddd',
+  background: white,
+  darkerBackground: darkWhite,
 
-  actionIcons: '#fff',
-  fonts: '#000',
-  placeholder: '#ddd',
+  actionIcons: white,
+  fonts: black,
+  placeholder: darkWhite,
 
-  addAction: '#3498db',
-  removeAction: '#e74c3c',
+  addAction: azure,
+  removeAction: tomato,
 
-  submitAction: '#2ecc71',
-  darkerSubmitAction: '#27ae60'
+  submitAction: booger,
+  darkerSubmitAction: darkBooger
 }

@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     padding: 10
   },
   text: {
-    fontFamily: 'serif',
     fontSize: 28,
     color: colors.fonts
   }

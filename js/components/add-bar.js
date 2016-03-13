@@ -23,7 +23,7 @@ export default ({ onPress }) => (
 
 const styles = StyleSheet.create({
   action: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     alignSelf: 'stretch',
     padding: 5
   }
