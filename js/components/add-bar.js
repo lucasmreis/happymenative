@@ -2,10 +2,9 @@ import React, {
   TouchableNativeFeedback,
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native'
-
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import colors from './colors'
 
@@ -15,7 +14,7 @@ export default ({ onPress }) => (
     background={TouchableNativeFeedback.Ripple(colors.darkerBackground, false)}>
 
     <View style={styles.action}>
-      <Icon name={'arrow-back'} size={32} color={colors.fonts} />
+      <Image source={require('./images/back-arrow.png')} />
     </View>
 
   </TouchableNativeFeedback>
@@ -25,6 +24,6 @@ const styles = StyleSheet.create({
   action: {
     backgroundColor: colors.background,
     alignSelf: 'stretch',
-    padding: 5
+    padding: 10
   }
 })

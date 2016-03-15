@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     padding: 10
   },
   text: {
-    fontSize: 28,
+    fontFamily: 'SourceSansPro-Regular',
+    fontSize: 24,
     color: colors.fonts
   }
 })

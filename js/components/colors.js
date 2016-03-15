@@ -8,7 +8,7 @@ const azure = '#03a9f4'
 const booger = '#8bc34a'
 const darkBooger = '#72aa31'
 
-const black = '#000'
+const black = 'rgba(0,0,0,0.87)'
 
 export default {
   background: white,

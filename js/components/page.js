@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     padding: 20
   },
   text: {
-    fontFamily: 'serif',
+    fontFamily: 'Merriweather-Light',
+    fontWeight: '300',
     fontSize: 28,
     color: colors.fonts
   }

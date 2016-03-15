@@ -4,7 +4,8 @@ import React, {
   View,
   Text,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -13,13 +14,13 @@ import colors from './colors'
 
 const theme = type =>
   type === 'add'
-    ? { color: colors.addAction, icon: 'create', height: 120 }
-    : { color: colors.removeAction, icon: 'clear', height: Dimensions.get('window').height / 4 }
+    ? { color: colors.addAction, icon: require('./images/pencil.png'), height: 120 }
+    : { color: colors.removeAction, icon: require('./images/trash.png'), height: Dimensions.get('window').height / 4 }
 
 export default ({ type }) => {
   const { color, icon, height } = theme(type)
   return <View style={styles(height, color).actionsView}>
-    <Icon name={icon} size={40} color={colors.actionIcons} />
+    <Image source={icon} />
   </View>
 }
 
